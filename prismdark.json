@@ -7,7 +7,7 @@
 	"description": "Let the Prismsanity begin!",
 	"prefix": "pridark",
 	"main_file": "main.lua",
-	"priority": -1,
+	"priority": 2,
 	"badge_colour": "00000",
 	"badge_text_colour": "fffff",
 	"version": "1.0.0-alpha",
