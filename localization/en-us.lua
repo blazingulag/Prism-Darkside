@@ -1,0 +1,7 @@
+return {
+    descriptions = {
+        Joker = {
+        }
+    }
+}
+

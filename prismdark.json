@@ -1,0 +1,15 @@
+{
+	"id": "PrismDarkside",
+	"name": "PrismDarkside",
+	"display_name": "Prism Darkside",
+	"author": ["Blazingulag"],
+	"website_url": "https://github.com/blazingulag/Prism_Darkside",
+	"description": "Let the Prismsanity begin!",
+	"prefix": "pridark",
+	"main_file": "main.lua",
+	"priority": -1,
+	"badge_colour": "00000",
+	"badge_text_colour": "fffff",
+	"version": "1.0.0-alpha",
+	"dependencies": ["Steamodded (>=1.0.0~ALPHA-1428c)","Prism (>=1.7.1)"]
+}
