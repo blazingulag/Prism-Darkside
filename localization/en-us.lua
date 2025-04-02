@@ -10,6 +10,19 @@ return {
                     "{s:0.8}Polynomial changes every round",
                 },
             },
+        },
+        Edition = {
+            e_pridark_trans = {
+              name = "Trans",
+              text = {
+                "{X:dark_edition,C:white}^#1#{} Mult"
+                }
+            }
+        },
+    },
+    misc = {
+        labels = {
+            pridark_trans = "Trans",
         }
     }
 }
