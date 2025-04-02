@@ -8,3 +8,4 @@ SMODS.Atlas({
 })
 
 SMODS.load_file('objects/jokers.lua')()
+SMODS.load_file('objects/editions.lua')()
