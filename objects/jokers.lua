@@ -56,8 +56,8 @@ SMODS.Joker({
 	key = "surprise_test",
 	atlas = "prismjokers",
 	pos = {x=0,y=0},
-	rarity = 1,
-	cost = 3,
+	rarity = 2,
+	cost = 7,
 	unlocked = true,
 	discovered = false,
 	blueprint_compat = true,
@@ -158,3 +158,33 @@ function solveFromIndex(index)
     local c2 = G.PRISMDARkSIDE.equations[index][3]
     return solveQuadric(c0, c1, c2)
 end
+
+SMODS.Joker({
+	key = "time_loop",
+	atlas = "prismjokers",
+	pos = {x=0,y=0},
+	rarity = 3,
+	cost = 10,
+	unlocked = true,
+	discovered = false,
+	blueprint_compat = true,
+	eternal_compat = true,
+	perishable_compat = true,
+    config = {extra = {ante = -1}},
+    loc_vars = function(self, info_queue, center)
+		return {
+            vars = {
+                center.ability.extra.ante,
+            }
+        }
+	end,
+    calculate = function(self, card, context)
+        if context.end_of_round and G.GAME.blind.boss and not context.other_card then
+            ease_ante(card.ability.extra.ante)
+            return {
+                message = localize('k_loop'),
+                colour = G.C.CHIPS
+            }
+        end
+    end
+})

@@ -10,6 +10,12 @@ return {
                     "{s:0.8}Polynomial changes every round",
                 },
             },
+            j_pridark_time_loop = {
+                name = "Time Loop",
+                text = {"{C:chips}#1#{} Ante after {C:attention}Boss Blind{}",
+                    "is defeated"
+                },
+            },
         },
         Edition = {
             e_pridark_trans = {
@@ -21,6 +27,9 @@ return {
         },
     },
     misc = {
+        dictionary = {
+            k_loop = "Loop!",
+        },
         labels = {
             pridark_trans = "Trans",
         }
