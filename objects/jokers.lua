@@ -4,7 +4,7 @@ SMODS.Atlas {
     px = 71,
     py = 95
 }
-G.PRISMDARkSIDE.equations = {
+G.PRISMDARKSIDE.equations = {
     {1,-3,2},
     {1,-4,3},
     {1,-5,4},
@@ -65,9 +65,9 @@ SMODS.Joker({
 	perishable_compat = true,
     config = {extra = {x_mult = 3,eq_index = 1,results = {0,0}}},
     loc_vars = function(self, info_queue, center)
-        local abc = {G.PRISMDARkSIDE.equations[center.ability.extra.eq_index][1],
-        G.PRISMDARkSIDE.equations[center.ability.extra.eq_index][2],
-        G.PRISMDARkSIDE.equations[center.ability.extra.eq_index][3]
+        local abc = {G.PRISMDARKSIDE.equations[center.ability.extra.eq_index][1],
+        G.PRISMDARKSIDE.equations[center.ability.extra.eq_index][2],
+        G.PRISMDARKSIDE.equations[center.ability.extra.eq_index][3]
     }
         local polynomial = string.format("%s %s%s %s %s%s %s %s",
             abc[1] >= 0 and "" or "-",
@@ -87,7 +87,7 @@ SMODS.Joker({
         }
 	end,
     add_to_deck = function(self, card, from_debuff)
-		card.ability.extra.eq_index = pseudorandom("algebra", 1, #G.PRISMDARkSIDE.equations)
+		card.ability.extra.eq_index = pseudorandom("algebra", 1, #G.PRISMDARKSIDE.equations)
         card.ability.extra.results = solveFromIndex(card.ability.extra.eq_index)
         print(card.ability.extra.results)
     end,
@@ -95,7 +95,7 @@ SMODS.Joker({
         if context.cardarea == G.jokers and (context.end_of_round and not context.blueprint) then
             local old_value = card.ability.extra.eq_index
             while card.ability.extra.eq_index == old_value do
-			    card.ability.extra.eq_index = pseudorandom("algebra", 1, #G.PRISMDARkSIDE.equations)
+			    card.ability.extra.eq_index = pseudorandom("algebra", 1, #G.PRISMDARKSIDE.equations)
             end
             card.ability.extra.results = solveFromIndex(card.ability.extra.eq_index)
             print(card.ability.extra.results)
@@ -153,9 +153,9 @@ function solveQuadric(c0, c1, c2)
 end
 
 function solveFromIndex(index)
-    local c0 = G.PRISMDARkSIDE.equations[index][1]
-    local c1 = G.PRISMDARkSIDE.equations[index][2]
-    local c2 = G.PRISMDARkSIDE.equations[index][3]
+    local c0 = G.PRISMDARKSIDE.equations[index][1]
+    local c1 = G.PRISMDARKSIDE.equations[index][2]
+    local c2 = G.PRISMDARKSIDE.equations[index][3]
     return solveQuadric(c0, c1, c2)
 end
 
@@ -163,7 +163,7 @@ SMODS.Joker({
 	key = "time_loop",
 	atlas = "prismjokers",
 	pos = {x=0,y=0},
-	rarity = 3,
+	rarity = "pridark_prismatic",
 	cost = 10,
 	unlocked = true,
 	discovered = false,
@@ -188,3 +188,48 @@ SMODS.Joker({
         end
     end
 })
+
+SMODS.Joker({
+	key = "karl",
+	atlas = "prismjokers",
+	pos = {x=0,y=1},
+    soul_pos = {x=0,y=2},
+	rarity = 4,
+	cost = 20,
+	unlocked = false,
+	discovered = false,
+	blueprint_compat = false,
+	eternal_compat = true,
+	perishable_compat = true,
+})
+
+local orig_get_current_pool = get_current_pool
+function get_current_pool(_type, _rarity, _legendary, _append, override_equilibrium_effect)
+	if next(find_joker('j_pridark_karl')) and not G.GAME.modifiers.cry_equilibrium then
+		if _type == "Joker" then
+			PDARK_JOKERS = {}
+            for k, v in pairs(G.P_CENTER_POOLS.Joker) do
+                if v.unlocked == true and not (G.GAME.used_jokers[v.key] and not next(find_joker("Showman")))
+                then
+                    PDARK_JOKERS[#PDARK_JOKERS + 1] = v.key
+                end
+            end
+			if #PDARK_JOKERS <= 0 then
+				PDARK_JOKERS[#PDARK_JOKERS + 1] = "j_joker"
+			end
+			return PDARK_JOKERS, "karl" .. G.GAME.round_resets.ante
+		end
+	end
+	return orig_get_current_pool(_type, _rarity, _legendary, _append)
+end
+
+local orig_get_rarity_badge = SMODS.Rarity.get_rarity_badge
+function SMODS.Rarity:get_rarity_badge(rarity)
+    if next(find_joker('j_pridark_karl')) then return localize("k_comrade") end
+    return orig_get_rarity_badge(self, rarity)
+end
+
+local orig_get_type_colour = get_type_colour
+function get_type_colour(_c, card)
+    return next(find_joker('j_pridark_karl')) and _c.set == 'Joker' and G.C.RED or orig_get_type_colour(_c, card)
+end

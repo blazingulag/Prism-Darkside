@@ -16,6 +16,15 @@ return {
                     "is defeated"
                 },
             },
+            j_pridark_karl = {
+                name = "Karl",
+                text = {"All {C:attention}Jokers{} are {C:red}Equal",
+                    "{C:inactive}(Same rarity and cost)"
+                },
+                unlock= {
+                    "{E:1,s:1.3}?????",
+                }
+            },
         },
         Edition = {
             e_pridark_trans = {
@@ -29,9 +38,12 @@ return {
     misc = {
         dictionary = {
             k_loop = "Loop!",
+            k_pridark_prismatic = "Prismatic",
+            k_comrade = "Comrade",
         },
         labels = {
             pridark_trans = "Trans",
+            pridark_prismatic = "Prismatic"
         }
     }
 }

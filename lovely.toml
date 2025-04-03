@@ -1,0 +1,15 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 10
+
+#karl
+[[patches]]
+[patches.pattern]
+target = 'card.lua'
+pattern = '''self.cost = math.max(1, math.floor((self.base_cost + self.extra_cost + 0.5)*(100-G.GAME.discount_percent)/100))'''
+position = 'before'
+payload = '''
+if next(find_joker('j_pridark_karl')) and self.ability.set == "Joker" then self.base_cost = 6 end
+'''
+match_indent = true
