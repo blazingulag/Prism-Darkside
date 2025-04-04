@@ -209,8 +209,7 @@ function get_current_pool(_type, _rarity, _legendary, _append, override_equilibr
 		if _type == "Joker" then
 			PDARK_JOKERS = {}
             for k, v in pairs(G.P_CENTER_POOLS.Joker) do
-                if v.unlocked == true and not (G.GAME.used_jokers[v.key] and not next(find_joker("Showman")))
-                then
+                if v.unlocked == true and v.rarity ~= "pridark_prismatic" and not (G.GAME.used_jokers[v.key] and not next(find_joker("Showman"))) then
                     PDARK_JOKERS[#PDARK_JOKERS + 1] = v.key
                 end
             end
