@@ -2,14 +2,18 @@ SMODS.Shader {
     key = 'trans',
     path = 'trans.fs'
 }
+SMODS.Sound {
+    key = 'trans',
+    path = 'trans.ogg'
+  }
 
 SMODS.Edition {
     key = 'trans',
     shader = 'trans',
     sound = {
-        sound = 'polychrome1',
+        sound = 'pridark_trans',
         per = 1,
-        vol = 0.4
+        vol = 0.7
     },
     discovered = true,
     weight = 3,

@@ -162,7 +162,7 @@ end
 SMODS.Joker({
 	key = "time_loop",
 	atlas = "prismjokers",
-	pos = {x=0,y=0},
+	pos = {x=0,y=3},
 	rarity = "pridark_prismatic",
 	cost = 10,
 	unlocked = true,
