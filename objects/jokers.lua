@@ -164,8 +164,8 @@ SMODS.Joker({
 	atlas = "prismjokers",
 	pos = {x=0,y=3},
 	rarity = "pridark_prismatic",
-	cost = 10,
-	unlocked = true,
+	cost = 40,
+	unlocked = false,
 	discovered = false,
 	blueprint_compat = true,
 	eternal_compat = true,
@@ -232,3 +232,17 @@ local orig_get_type_colour = get_type_colour
 function get_type_colour(_c, card)
     return next(find_joker('j_pridark_karl')) and _c.set == 'Joker' and G.C.RED or orig_get_type_colour(_c, card)
 end
+
+SMODS.Joker({
+	key = "opticus",
+	atlas = "prismjokers",
+	pos = {x=0,y=4},
+    soul_pos = {x=0,y=5},
+	rarity = 4,
+	cost = 40,
+	unlocked = false,
+	discovered = false,
+	blueprint_compat = false,
+	eternal_compat = true,
+	perishable_compat = true,
+})

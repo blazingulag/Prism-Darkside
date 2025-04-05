@@ -15,6 +15,11 @@ return {
                 text = {"{C:chips}#1#{} Ante after {C:attention}Boss Blind{}",
                     "is defeated"
                 },
+                unlock={
+                    "Discover the",
+                    "true {C:prismatic}Power{} of",
+                    "the {C:prismatic}Prism",
+                },
             },
             j_pridark_karl = {
                 name = "Karl",
@@ -24,6 +29,17 @@ return {
                 unlock= {
                     "{E:1,s:1.3}?????",
                 }
+            },
+            j_pridark_opticus = {
+                name = "Opticus",
+                text = {"All {C:attention}Jokers{} are {C:red}Equal",
+                    "{C:inactive}(Same rarity and cost)"
+                },
+                unlock={
+                    "Discover the",
+                    "true {C:prismatic}Power{} of",
+                    "the {C:prismatic}Prism",
+                },
             },
         },
         Edition = {
