@@ -19,6 +19,7 @@ SMODS.Rarity({
 
 SMODS.load_file('objects/jokers.lua')()
 SMODS.load_file('objects/editions.lua')()
+SMODS.load_file('objects/consumables.lua')()
 
 local function hsv(h, s, v)
     if s <= 0 then return v,v,v end

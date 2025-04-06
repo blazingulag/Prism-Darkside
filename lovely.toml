@@ -13,3 +13,14 @@ payload = '''
 if next(find_joker('j_pridark_karl')) and self.ability.set == "Joker" then self.base_cost = 6 end
 '''
 match_indent = true
+
+#fluorite
+[[patches]]
+[patches.pattern]
+target = 'functions/common_events.lua'
+pattern = '''(v.unlocked ~= false or v.rarity == 4) then'''
+position = 'at'
+payload = '''
+(v.unlocked ~= false or (v.rarity == 4 or (v.rarity == "pridark_prismatic" and v.in_pool))) then
+'''
+match_indent = true

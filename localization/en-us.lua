@@ -32,13 +32,29 @@ return {
             },
             j_pridark_opticus = {
                 name = "Opticus",
-                text = {"All {C:attention}Jokers{} are {C:red}Equal",
-                    "{C:inactive}(Same rarity and cost)"
+                text = {""
                 },
                 unlock={
                     "Discover the",
                     "true {C:prismatic}Power{} of",
                     "the {C:prismatic}Prism",
+                },
+            },
+            j_pridark_opticus_inactive = {
+                name = "Opticus",
+                text = {"Play {C:attention}#1#{} hand",
+                    "containing {C:attention}4{} suits",
+                    "to {C:prismatic}Awaken",
+                    "{C:inactive}(Currently {C:attention}#2#{C:inactive}/#1#)"
+                },
+            },
+        },
+        Spectral = {
+            c_pridark_spectral_fluorite = {
+                name = "Fluorite",
+                text = {"Creates a {C:red}dormant",
+                    "{C:prismatic}Prismatic{} Joker",
+                    "{C:inactive}(Must have room)"
                 },
             },
         },
@@ -56,6 +72,7 @@ return {
             k_loop = "Loop!",
             k_pridark_prismatic = "Prismatic",
             k_comrade = "Comrade",
+            k_awaken = "Awakened!",
         },
         labels = {
             pridark_trans = "Trans",

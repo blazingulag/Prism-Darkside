@@ -1,5 +1,5 @@
 SMODS.Atlas {
-    key = 'prismjokers',
+    key = 'pridarkjokers',
     path = "jokers.png",
     px = 71,
     py = 95
@@ -54,7 +54,7 @@ G.PRISMDARKSIDE.equations = {
 
 SMODS.Joker({
 	key = "surprise_test",
-	atlas = "prismjokers",
+	atlas = "pridarkjokers",
 	pos = {x=0,y=0},
 	rarity = 2,
 	cost = 7,
@@ -160,38 +160,8 @@ function solveFromIndex(index)
 end
 
 SMODS.Joker({
-	key = "time_loop",
-	atlas = "prismjokers",
-	pos = {x=0,y=3},
-	rarity = "pridark_prismatic",
-	cost = 40,
-	unlocked = false,
-	discovered = false,
-	blueprint_compat = true,
-	eternal_compat = true,
-	perishable_compat = true,
-    config = {extra = {ante = -1}},
-    loc_vars = function(self, info_queue, center)
-		return {
-            vars = {
-                center.ability.extra.ante,
-            }
-        }
-	end,
-    calculate = function(self, card, context)
-        if context.end_of_round and G.GAME.blind.boss and not context.other_card then
-            ease_ante(card.ability.extra.ante)
-            return {
-                message = localize('k_loop'),
-                colour = G.C.CHIPS
-            }
-        end
-    end
-})
-
-SMODS.Joker({
 	key = "karl",
-	atlas = "prismjokers",
+	atlas = "pridarkjokers",
 	pos = {x=0,y=1},
     soul_pos = {x=0,y=2},
 	rarity = 4,
@@ -233,12 +203,57 @@ function get_type_colour(_c, card)
     return next(find_joker('j_pridark_karl')) and _c.set == 'Joker' and G.C.RED or orig_get_type_colour(_c, card)
 end
 
+function G.PRISMDARKSIDE.awaken(card)
+    G.E_MANAGER:add_event(Event({
+        func = function()
+            play_sound('tarot2', 1.1, 0.6)
+            card:set_ability(G.P_CENTERS[card.ability.awakened])
+            return true
+        end
+    }))
+    return {
+        message = localize('k_awaken'),
+        colour = G.PRISMDARKSIDE.PRISMATIC,
+        card = card
+    }
+end
+
+SMODS.Joker({
+	key = "time_loop",
+	atlas = "pridarkjokers",
+	pos = {x=0,y=3},
+	rarity = "pridark_prismatic",
+	cost = 40,
+	unlocked = false,
+	discovered = false,
+	blueprint_compat = true,
+	eternal_compat = true,
+	perishable_compat = true,
+    config = {extra = {ante = -1}},
+    loc_vars = function(self, info_queue, center)
+		return {
+            vars = {
+                center.ability.extra.ante,
+            }
+        }
+	end,
+    calculate = function(self, card, context)
+        if context.end_of_round and G.GAME.blind.boss and not context.other_card then
+            ease_ante(card.ability.extra.ante)
+            return {
+                message = localize('k_loop'),
+                colour = G.C.CHIPS
+            }
+        end
+    end
+})
+
 SMODS.Joker({
 	key = "opticus",
-	atlas = "prismjokers",
+	atlas = "pridarkjokers",
 	pos = {x=0,y=4},
     soul_pos = {x=0,y=5},
-	rarity = 4,
+	rarity = "pridark_prismatic",
 	cost = 40,
 	unlocked = false,
 	discovered = false,
@@ -246,3 +261,74 @@ SMODS.Joker({
 	eternal_compat = true,
 	perishable_compat = true,
 })
+
+SMODS.Joker({
+	key = "opticus_inactive",
+	atlas = "pridarkjokers",
+	pos = {x=0,y=4},
+    soul_pos = {x=0,y=6},
+	rarity = "pridark_prismatic",
+	cost = 40,
+	unlocked = true,
+	discovered = true,
+    no_collection = true,
+	blueprint_compat = false,
+	eternal_compat = true,
+	perishable_compat = true,
+    immutable = true,
+    in_pool = false,
+    config = {awakened = "j_pridark_opticus", extra = {required = 2,current = 0}},
+    loc_vars = function(self, info_queue, center)
+		return {
+            vars = {center.ability.extra.required,center.ability.extra.current}
+        }
+	end,
+    calculate = function(self, card, context)
+        if context.after then
+            if G.PRISMDARKSIDE.get_unique_suits(context.scoring_hand,nil) >= 4 then
+                card.ability.extra.current = card.ability.extra.current + 1
+                if card.ability.extra.required - card.ability.extra.current <= 0 then
+                    return G.PRISMDARKSIDE.awaken(card)
+                else
+                    return {
+                        message =  (card.ability.extra.current..'/'..card.ability.extra.required),
+					    colour = G.C.FILTER,
+					    card = card
+                    }
+                end
+            end
+        end
+    end
+})
+
+function G.PRISMDARKSIDE.get_unique_suits(scoring_hand, bypass_debuff)
+    local suits = {}
+    for k, _ in pairs(SMODS.Suits) do
+        suits[k] = 0
+    end
+    for _, card in ipairs(scoring_hand) do
+        if not SMODS.has_any_suit(card) then
+            for suit, count in pairs(suits) do
+                if card:is_suit(suit, bypass_debuff) and count == 0 then
+                    suits[suit] = count + 1
+                    break
+                end
+            end
+        end
+    end
+    for _, card in ipairs(scoring_hand) do
+        if SMODS.has_any_suit(card) then
+            for suit, count in pairs(suits) do
+                if card:is_suit(suit, bypass_debuff) and count == 0 then
+                    suits[suit] = count + 1
+                    break
+                end
+            end
+        end
+    end
+    local num_suits = 0
+    for _, v in pairs(suits) do
+        if v > 0 then num_suits = num_suits + 1 end
+    end
+    return num_suits
+end
