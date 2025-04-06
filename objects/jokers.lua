@@ -233,9 +233,7 @@ SMODS.Joker({
     config = {extra = {ante = -1}},
     loc_vars = function(self, info_queue, center)
 		return {
-            vars = {
-                center.ability.extra.ante,
-            }
+            vars = {center.ability.extra.ante}
         }
 	end,
     calculate = function(self, card, context)
@@ -250,6 +248,45 @@ SMODS.Joker({
 })
 
 SMODS.Joker({
+	key = "time_loop_inactive",
+	atlas = "pridarkjokers",
+	pos = {x=0,y=3},
+    --soul_pos = {x=0,y=4},
+	rarity = "pridark_prismatic",
+	cost = 40,
+	unlocked = true,
+	discovered = true,
+	blueprint_compat = false,
+	eternal_compat = true,
+	perishable_compat = true,
+       
+    no_collection = true,
+    immutable = true,
+    in_pool = false,
+
+    config = {awakened = "j_pridark_time_loop", extra = {required = 2,current = 0}},
+    loc_vars = function(self, info_queue, center)
+		return {
+                vars = {center.ability.extra.required,center.ability.extra.current}
+        }
+	end,
+    calculate = function(self, card, context)
+        if context.end_of_round and G.GAME.blind.boss and not context.other_card then
+            card.ability.extra.current = card.ability.extra.current + 1
+            if card.ability.extra.required - card.ability.extra.current <= 0 then
+                return G.PRISMDARKSIDE.awaken(card)
+            else
+                return {
+                    message =  (card.ability.extra.current..'/'..card.ability.extra.required),
+                    colour = G.C.FILTER,
+                    card = card
+                }
+            end
+        end
+    end
+})
+
+SMODS.Joker({
 	key = "opticus",
 	atlas = "pridarkjokers",
 	pos = {x=0,y=5},
@@ -258,7 +295,7 @@ SMODS.Joker({
 	cost = 40,
 	unlocked = false,
 	discovered = false,
-	blueprint_compat = false,
+	blueprint_compat = true,
 	eternal_compat = true,
 	perishable_compat = true,
     config = {extra = {gain = 0.1}},
@@ -296,12 +333,14 @@ SMODS.Joker({
 	cost = 40,
 	unlocked = true,
 	discovered = true,
-    no_collection = true,
 	blueprint_compat = false,
 	eternal_compat = true,
 	perishable_compat = true,
+
+    no_collection = true,
     immutable = true,
     in_pool = false,
+
     config = {awakened = "j_pridark_opticus", extra = {required = 2,current = 0}},
     loc_vars = function(self, info_queue, center)
 		return {

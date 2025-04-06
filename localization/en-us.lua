@@ -12,13 +12,21 @@ return {
             },
             j_pridark_time_loop = {
                 name = "Time Loop",
-                text = {"{C:chips}#1#{} Ante after {C:attention}Boss Blind{}",
-                    "is defeated"
+                text = {"{C:chips}#1#{} Ante after {C:attention}Boss",
+                    "{C:attention}Blind{} is defeated"
                 },
                 unlock={
                     "Discover the",
                     "true {C:prismatic}Power{} of",
                     "the {C:prismatic}Prism",
+                },
+            },
+            j_pridark_time_loop_inactive = {
+                name = "Time Loop",
+                text = {"Defeat {C:attention}#1#{}",
+                    "{C:attention}Boss Blinds{}",
+                    "to {C:prismatic}Awaken",
+                    "{C:inactive}(Currently {C:attention}#2#{C:inactive}/#1#)"
                 },
             },
             j_pridark_karl = {
