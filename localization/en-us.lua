@@ -32,7 +32,7 @@ return {
             },
             j_pridark_opticus = {
                 name = "Opticus",
-                text = {"{C:attention}All{} card permanently",
+                text = {"{C:attention}All{} cards permanently",
                     "gain {X:red,C:white}X#1#{} Mult when a",
                     "card with a {C:red}different{}",
                     "{C:attention}Suit{} is scored"
@@ -45,7 +45,7 @@ return {
             },
             j_pridark_opticus_inactive = {
                 name = "Opticus",
-                text = {"Play {C:attention}#1#{} hand",
+                text = {"Play {C:attention}#1#{} hands",
                     "containing {C:attention}4{} suits",
                     "to {C:prismatic}Awaken",
                     "{C:inactive}(Currently {C:attention}#2#{C:inactive}/#1#)"
