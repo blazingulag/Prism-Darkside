@@ -260,6 +260,30 @@ SMODS.Joker({
 	blueprint_compat = false,
 	eternal_compat = true,
 	perishable_compat = true,
+    config = {extra = {gain = 0.1}},
+    loc_vars = function(self, info_queue, center)
+		return {
+            vars = {center.ability.extra.gain}
+        }
+	end,
+    calculate = function(self, card, context)
+        if context.cardarea == G.play and context.individual then
+            local suits = {}
+            for k, _ in pairs(SMODS.Suits) do
+                suits[k] = 0
+            end
+            local card_suit = context.other_card.base.suit
+            for k, v in pairs(G.playing_cards) do
+                for suit, count in pairs(suits) do
+                    if suit ~= card_suit and v:is_suit(suit) then
+                        v.ability.perma_x_mult = v.ability.perma_x_mult or 0
+                        v.ability.perma_x_mult = v.ability.perma_x_mult + card.ability.extra.gain
+                        break
+                    end
+                end
+            end
+        end
+    end
 })
 
 SMODS.Joker({

@@ -32,7 +32,10 @@ return {
             },
             j_pridark_opticus = {
                 name = "Opticus",
-                text = {""
+                text = {"{C:attention}All{} card permanently",
+                    "gain {X:red,C:white}X#1#{} Mult when a",
+                    "card with a {C:red}different{}",
+                    "{C:attention}Suit{} is scored"
                 },
                 unlock={
                     "Discover the",
