@@ -287,6 +287,104 @@ SMODS.Joker({
 })
 
 SMODS.Joker({
+	key = "ultipizza",
+	atlas = "pridarkjokers",
+	pos = {x=0,y=8},
+    soul_pos = {x=0,y=9},
+	rarity = "pridark_prismatic",
+	cost = 40,
+	unlocked = false,
+	discovered = false,
+	blueprint_compat = true,
+	eternal_compat = true,
+	perishable_compat = true,
+    config = {extra = {e_mult = 0.5}},
+    loc_vars = function(self, info_queue, center)
+		return {
+            vars = {center.ability.extra.e_mult, 1 + center.ability.extra.e_mult * (G.GAME.prism_pizza_lv or 0)}
+        }
+	end,
+    calculate = function(self, card, context)
+        if context.joker_main then
+            return{
+                emult = 1 + card.ability.extra.e_mult * (G.GAME.prism_pizza_lv or 0),
+                card = card
+            }
+        end
+        if context.setting_blind then
+            local card = create_card("Pizza", G.jokers, nil, nil, nil, nil, nil, "ultipizza")
+            card:set_edition({
+                negative = true,
+            })
+            card:add_to_deck()
+            G.jokers:emplace(card)
+            return nil,true
+        end
+    end
+})
+
+SMODS.Joker({
+	key = "ultipizza_inactive",
+	atlas = "pridarkjokers",
+	pos = {x=0,y=8},
+    soul_pos = {x=0,y=10},
+	rarity = "pridark_prismatic",
+	cost = 40,
+	unlocked = true,
+	discovered = true,
+	blueprint_compat = false,
+	eternal_compat = true,
+	perishable_compat = true,
+
+    no_collection = true,
+    immutable = true,
+    in_pool = false,
+
+    config = {awakened = "j_pridark_ultipizza", extra = {required = 2,current = 0,previous_suit = nil}},
+    loc_vars = function(self, info_queue, center)
+		return {
+            vars = {center.ability.extra.required,center.ability.extra.current}
+        }
+	end,
+    calculate = function(self, card, context)
+        if context.after and next(context.poker_hands['Flush']) then
+            local flush_suit = {}
+            local suit_count = 0
+            local differnt_suit = false
+            for k,v in pairs(G.PRISMDARKSIDE.get_suits(context.scoring_hand,nil)) do
+                if v == suit_count and v ~= 0 then
+                    flush_suit[k] = true
+                elseif  v > suit_count then
+                    flush_suit = {}
+                    flush_suit[k] = true
+                    suit_count = v
+                end
+            end
+            for k,v in pairs(flush_suit) do
+                if v and k ~= card.ability.extra.previous_suit then
+                    card.ability.extra.previous_suit = k
+                    differnt_suit = true
+                end
+            end
+            print(flush_suit)
+            print(card.ability.extra.previous_suit)
+            if differnt_suit then
+                card.ability.extra.current = card.ability.extra.current + 1
+                if card.ability.extra.required - card.ability.extra.current <= 0 then
+                    return G.PRISMDARKSIDE.awaken(card)
+                else
+                    return {
+                        message =  (card.ability.extra.current..'/'..card.ability.extra.required),
+					    colour = G.C.FILTER,
+					    card = card
+                    }
+                end
+            end
+        end
+    end
+})
+
+SMODS.Joker({
 	key = "opticus",
 	atlas = "pridarkjokers",
 	pos = {x=0,y=5},
@@ -365,7 +463,7 @@ SMODS.Joker({
     end
 })
 
-function G.PRISMDARKSIDE.get_unique_suits(scoring_hand, bypass_debuff)
+function G.PRISMDARKSIDE.get_suits(scoring_hand, bypass_debuff)
     local suits = {}
     for k, _ in pairs(SMODS.Suits) do
         suits[k] = 0
@@ -390,6 +488,11 @@ function G.PRISMDARKSIDE.get_unique_suits(scoring_hand, bypass_debuff)
             end
         end
     end
+    return suits
+end
+
+function G.PRISMDARKSIDE.get_unique_suits(scoring_hand, bypass_debuff)
+    local suits = G.PRISMDARKSIDE.get_suits(scoring_hand, bypass_debuff)
     local num_suits = 0
     for _, v in pairs(suits) do
         if v > 0 then num_suits = num_suits + 1 end

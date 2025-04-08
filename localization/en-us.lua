@@ -59,6 +59,23 @@ return {
                     "{C:inactive}(Currently {C:attention}#2#{C:inactive}/#1#)"
                 },
             },
+            j_pridark_ultipizza = {
+                name = "The Ultimate Pizza",
+                text = {"{X:dark_edition,C:white}^#1#{} Mult per {C:attention}Pizza{}",
+                    "eaten this run.",
+                    "Create a {C:dark_edition}Negative {C:attention}Pizza",
+                    "when {C:attention}Blind{} is selected",
+                    "{C:inactive}(Currently {X:dark_edition,C:white}^#2#{C:inactive} Mult)",
+                },
+            },
+            j_pridark_ultipizza_inactive = {
+                name = "The Ultimate Pizza",
+                text = {"Play {C:attention}#1# Flushes",
+                    "of {C:attention}different{} suits",
+                    "to {C:prismatic}Awaken",
+                    "{C:inactive}(Currently {C:attention}#2#{C:inactive}/#1#)"
+                },
+            },
         },
         Spectral = {
             c_pridark_spectral_fluorite = {
