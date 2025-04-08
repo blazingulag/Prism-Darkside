@@ -17,5 +17,5 @@ The mod currently adds:
 - [Lovely](https://github.com/ethangreen-dev/lovely-injector)
 - [Prism](https://github.com/blazingulg/prism)
 
-- # Credits
+# Credits
 - Autism by MilƱMeg4
