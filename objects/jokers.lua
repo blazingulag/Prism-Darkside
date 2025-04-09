@@ -351,7 +351,7 @@ SMODS.Joker({
             local flush_suit = {}
             local suit_count = 0
             local differnt_suit = false
-            for k,v in pairs(G.PRISMDARKSIDE.get_suits(context.scoring_hand,nil)) do
+            for k,v in pairs(G.PRISM.get_suits(context.scoring_hand,nil)) do
                 if v == suit_count and v ~= 0 then
                     flush_suit[k] = true
                 elseif  v > suit_count then
@@ -447,7 +447,7 @@ SMODS.Joker({
 	end,
     calculate = function(self, card, context)
         if context.after then
-            if G.PRISMDARKSIDE.get_unique_suits(context.scoring_hand,nil) >= 4 then
+            if G.PRISM.get_unique_suits(context.scoring_hand,nil) >= 4 then
                 card.ability.extra.current = card.ability.extra.current + 1
                 if card.ability.extra.required - card.ability.extra.current <= 0 then
                     return G.PRISMDARKSIDE.awaken(card)
@@ -462,40 +462,3 @@ SMODS.Joker({
         end
     end
 })
-
-function G.PRISMDARKSIDE.get_suits(scoring_hand, bypass_debuff)
-    local suits = {}
-    for k, _ in pairs(SMODS.Suits) do
-        suits[k] = 0
-    end
-    for _, card in ipairs(scoring_hand) do
-        if not SMODS.has_any_suit(card) then
-            for suit, count in pairs(suits) do
-                if card:is_suit(suit, bypass_debuff) and count == 0 then
-                    suits[suit] = count + 1
-                    break
-                end
-            end
-        end
-    end
-    for _, card in ipairs(scoring_hand) do
-        if SMODS.has_any_suit(card) then
-            for suit, count in pairs(suits) do
-                if card:is_suit(suit, bypass_debuff) and count == 0 then
-                    suits[suit] = count + 1
-                    break
-                end
-            end
-        end
-    end
-    return suits
-end
-
-function G.PRISMDARKSIDE.get_unique_suits(scoring_hand, bypass_debuff)
-    local suits = G.PRISMDARKSIDE.get_suits(scoring_hand, bypass_debuff)
-    local num_suits = 0
-    for _, v in pairs(suits) do
-        if v > 0 then num_suits = num_suits + 1 end
-    end
-    return num_suits
-end
