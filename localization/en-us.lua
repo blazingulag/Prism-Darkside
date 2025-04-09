@@ -88,10 +88,10 @@ return {
         },
         Edition = {
             e_pridark_trans = {
-              name = "Trans",
-              text = {
-                "{X:dark_edition,C:white}^#1#{} Mult"
-                }
+                name = "Trans",
+                text = {
+                    "{X:dark_edition,C:white}^#1#{} Mult"
+                    }
             }
         },
     },
