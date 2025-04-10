@@ -54,8 +54,8 @@ return {
             j_pridark_opticus_inactive = {
                 name = "Opticus",
                 text = {"Play {C:attention}#1#{} hands",
-                    "containing {C:attention}4{} suits",
-                    "to {C:prismatic}Awaken",
+                    "containing {C:attention}4{} scoring",
+                    "suits to {C:prismatic}Awaken",
                     "{C:inactive}(Currently {C:attention}#2#{C:inactive}/#1#)"
                 },
             },
@@ -99,12 +99,14 @@ return {
         dictionary = {
             k_loop = "Loop!",
             k_pridark_prismatic = "Prismatic",
+            k_pridark_prismatic_inactive = "Prismatic",
             k_comrade = "Comrade",
             k_awaken = "Awakened!",
         },
         labels = {
             pridark_trans = "Trans",
-            pridark_prismatic = "Prismatic"
+            pridark_prismatic = "Prismatic",
+            pridark_prismatic_inactive = "Prismatic"
         }
     }
 }

@@ -89,7 +89,6 @@ SMODS.Joker({
     add_to_deck = function(self, card, from_debuff)
 		card.ability.extra.eq_index = pseudorandom("algebra", 1, #G.PRISMDARKSIDE.equations)
         card.ability.extra.results = solveFromIndex(card.ability.extra.eq_index)
-        print(card.ability.extra.results)
     end,
     calculate = function(self, card, context)
         if context.cardarea == G.jokers and (context.end_of_round and not context.blueprint) then
@@ -98,7 +97,6 @@ SMODS.Joker({
 			    card.ability.extra.eq_index = pseudorandom("algebra", 1, #G.PRISMDARKSIDE.equations)
             end
             card.ability.extra.results = solveFromIndex(card.ability.extra.eq_index)
-            print(card.ability.extra.results)
 			return {
 				message = localize('k_reset')
 			}
@@ -252,7 +250,7 @@ SMODS.Joker({
 	atlas = "pridarkjokers",
 	pos = {x=0,y=3},
     --soul_pos = {x=0,y=4},
-	rarity = "pridark_prismatic",
+	rarity = "pridark_prismatic_inactive",
 	cost = 40,
 	unlocked = true,
 	discovered = true,
@@ -328,7 +326,7 @@ SMODS.Joker({
 	atlas = "pridarkjokers",
 	pos = {x=0,y=8},
     soul_pos = {x=0,y=10},
-	rarity = "pridark_prismatic",
+	rarity = "pridark_prismatic_inactive",
 	cost = 40,
 	unlocked = true,
 	discovered = true,
@@ -366,8 +364,6 @@ SMODS.Joker({
                     differnt_suit = true
                 end
             end
-            print(flush_suit)
-            print(card.ability.extra.previous_suit)
             if differnt_suit then
                 card.ability.extra.current = card.ability.extra.current + 1
                 if card.ability.extra.required - card.ability.extra.current <= 0 then
@@ -427,7 +423,7 @@ SMODS.Joker({
 	atlas = "pridarkjokers",
 	pos = {x=0,y=5},
     soul_pos = {x=0,y=7},
-	rarity = "pridark_prismatic",
+	rarity = "pridark_prismatic_inactive",
 	cost = 40,
 	unlocked = true,
 	discovered = true,

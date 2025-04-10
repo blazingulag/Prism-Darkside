@@ -25,6 +25,7 @@ SMODS.Consumable({
 			func = function()
 				play_sound("timpani")
 				local card = create_card("Joker", G.jokers, nil, "pridark_prismatic", nil, nil, nil, "fluorite")
+                print(card.config.center.key)
                 if G.P_CENTERS[card.label.."_inactive"] then card:set_ability(G.P_CENTERS[card.label.."_inactive"]) end
 				card:add_to_deck()
 				G.jokers:emplace(card)
