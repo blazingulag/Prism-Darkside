@@ -414,6 +414,11 @@ SMODS.Joker({
                     end
                 end
             end
+            return {
+                message = localize('k_upgrade_ex'),
+                colour = G.C.RED,
+                card = card
+            }
         end
     end
 })
