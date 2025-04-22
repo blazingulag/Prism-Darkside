@@ -63,6 +63,7 @@ SMODS.Joker({
 	blueprint_compat = true,
 	eternal_compat = true,
 	perishable_compat = true,
+    immutable = true,
     config = {extra = {x_mult = 3,eq_index = 1,results = {0,0}}},
     loc_vars = function(self, info_queue, center)
         local abc = {G.PRISMDARKSIDE.equations[center.ability.extra.eq_index][1],
@@ -448,6 +449,7 @@ SMODS.Joker({
 	end,
     calculate = function(self, card, context)
         if context.after then
+            print(G.PRISM.get_unique_suits(context.scoring_hand,nil))
             if G.PRISM.get_unique_suits(context.scoring_hand,nil) >= 4 then
                 card.ability.extra.current = card.ability.extra.current + 1
                 if card.ability.extra.required - card.ability.extra.current <= 0 then
