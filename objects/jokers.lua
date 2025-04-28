@@ -350,7 +350,7 @@ SMODS.Joker({
             local flush_suit = {}
             local suit_count = 0
             local differnt_suit = false
-            for k,v in pairs(G.PRISM.get_suits(context.scoring_hand,nil)) do
+            for k,v in pairs(G.PRISM.get_suits(context.scoring_hand or {},nil)) do
                 if v == suit_count and v ~= 0 then
                     flush_suit[k] = true
                 elseif  v > suit_count then
@@ -449,8 +449,8 @@ SMODS.Joker({
 	end,
     calculate = function(self, card, context)
         if context.after then
-            print(G.PRISM.get_unique_suits(context.scoring_hand,nil))
-            if G.PRISM.get_unique_suits(context.scoring_hand,nil) >= 4 then
+            print(G.PRISM.get_unique_suits(context.scoring_hand or {},nil))
+            if G.PRISM.get_unique_suits(context.scoring_hand or {},nil) >= 4 then
                 card.ability.extra.current = card.ability.extra.current + 1
                 if card.ability.extra.required - card.ability.extra.current <= 0 then
                     return G.PRISMDARKSIDE.awaken(card)
