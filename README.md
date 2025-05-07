@@ -2,7 +2,7 @@
 
 Prepare for the prismsanity!
 
-An addon for [Prism](https://github.com/blazingulg/prism) that breaks with the vanilla-like formula.
+An addon for [Prism](https://github.com/blazingulg/Prism) that breaks with the vanilla-like formula.
 
 # Content
 
