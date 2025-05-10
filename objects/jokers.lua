@@ -53,6 +53,78 @@ G.PRISMDARKSIDE.equations = {
 }
 
 SMODS.Joker({
+	key = "bfm_l",
+	atlas = "pridarkjokers",
+	pos = { x = 0, y = 11 },
+	rarity = 1,
+	cost = 5,
+	config = {extra = { mult = 99,}},
+	unlocked = true,
+	discovered = false,
+	blueprint_compat = true,
+	loc_vars = function(self, info_queue, card)
+		if not card.fake_card then info_queue[#info_queue + 1] = G.P_CENTERS.j_pridark_bfm_r end
+		local ext = card.ability.extra
+		return {
+			vars = { ext.mult},
+		}
+	end,
+	calculate = function(self, card, context)
+		if context.joker_main then
+			local ext = card.ability.extra
+			local active = false
+			for i = 1, #G.jokers.cards do
+				if G.jokers.cards[i] == card and G.jokers.cards[i+1] then 
+					active = G.jokers.cards[i+1].config.center.key == "j_pridark_bfm_r"
+				end
+			end
+			if active then
+				return {
+					mult = ext.mult,
+					card = card
+				}
+			end
+		end
+	end,
+})
+
+SMODS.Joker({
+	key = "bfm_r",
+	atlas = "pridarkjokers",
+	pos = { x = 0, y = 12 },
+	rarity = 1,
+	cost = 5,
+	config = {extra = { chips = 99,}},
+	unlocked = true,
+	discovered = false,
+	blueprint_compat = true,
+	loc_vars = function(self, info_queue, card)
+		if not card.fake_card then info_queue[#info_queue + 1] = G.P_CENTERS.j_pridark_bfm_l end
+		local ext = card.ability.extra
+		return {
+			vars = { ext.chips},
+		}
+	end,
+	calculate = function(self, card, context)
+		if context.joker_main then
+			local ext = card.ability.extra
+			local active = false
+			for i = 1, #G.jokers.cards do
+				if G.jokers.cards[i] == card and G.jokers.cards[i-1] then 
+					active = G.jokers.cards[i-1].config.center.key == "j_pridark_bfm_l"
+				end
+			end
+			if active then
+				return {
+					chips = ext.chips,
+					card = card
+				}
+			end
+		end
+	end,
+})
+
+SMODS.Joker({
 	key = "surprise_test",
 	atlas = "pridarkjokers",
 	pos = {x=0,y=0},
@@ -423,7 +495,6 @@ SMODS.Joker({
         end
     end
 })
-
 SMODS.Joker({
 	key = "opticus_inactive",
 	atlas = "pridarkjokers",

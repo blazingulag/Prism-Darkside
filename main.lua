@@ -21,6 +21,7 @@ SMODS.Rarity({
     badge_colour = G.PRISMDARKSIDE.C.PRISMATIC
 })
 
+SMODS.load_file('objects/funcs.lua')()
 SMODS.load_file('objects/jokers.lua')()
 SMODS.load_file('objects/editions.lua')()
 SMODS.load_file('objects/consumables.lua')()

@@ -1,6 +1,20 @@
 return {
     descriptions = {
         Joker = {
+            j_pridark_bfm_l = {
+                name = "Big Furry Monster",
+                pridark_subtitle = "Left Half",
+                text = {"{C:red}+#1#{} Mult if to the",
+                    "left of the {C:attention}Right Half",
+                }
+            },
+            j_pridark_bfm_r = {
+                name = "Big Furry Monster",
+                pridark_subtitle = "Right Half",
+                text = {"{C:chips}+#1#{} Chips if to the",
+                    "right of the {C:attention}Left Half",
+                }
+            },
             j_pridark_surprise_test = {
                 name = "Surprise Test",
                 text = {"Palyed cards with rank {C:attention}X{}",
