@@ -15,7 +15,7 @@ The mod currently adds:
 # Requirements
 - [Steamodded](https://github.com/Steamopollys/Steamodded)
 - [Lovely](https://github.com/ethangreen-dev/lovely-injector)
-- [Prism](https://github.com/blazingulg/prism)
+- [Prism](https://github.com/blazingulg/Prism)
 
 # Credits
 - Autism by MilƱMeg4
