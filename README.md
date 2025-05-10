@@ -2,7 +2,7 @@
 
 Prepare for the prismsanity!
 
-An addon for [Prism](https://github.com/blazingulg/prism) that breaks with the vanilla-like formula.
+An addon for [Prism](https://github.com/blazingulag/Prism) that breaks with the vanilla-like formula.
 
 # Content
 
@@ -15,7 +15,7 @@ The mod currently adds:
 # Requirements
 - [Steamodded](https://github.com/Steamopollys/Steamodded)
 - [Lovely](https://github.com/ethangreen-dev/lovely-injector)
-- [Prism](https://github.com/blazingulg/prism)
+- [Prism](https://github.com/blazingulag/Prism)
 
 # Credits
 - Autism by MilƱMeg4
