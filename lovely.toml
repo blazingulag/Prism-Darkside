@@ -13,22 +13,3 @@ payload = '''
 if next(find_joker('j_pridark_karl')) and self.ability.set == "Joker" then self.base_cost = 6 end
 '''
 match_indent = true
-
-#fluorite
-[[patches]]
-[patches.pattern]
-target = 'functions/common_events.lua'
-pattern = '''(v.unlocked ~= false or v.rarity == 4) then'''
-position = 'at'
-payload = '''
-(v.unlocked ~= false or (v.rarity == 4 or (v.rarity == "pridark_prismatic" and v.in_pool))) then
-'''
-match_indent = true
-
-[[patches]]
-[patches.pattern]
-target = 'functions/common_events.lua'
-pattern = 'elseif not (G.GAME.used_jokers[v.key] and not pool_opts.allow_duplicates and not next(find_joker("Showman"))) and'
-position = 'at'
-payload = '''elseif not ((G.GAME.used_jokers[v.key] or v.rarity == "pridark_prismatic" and G.GAME.used_jokers[v.key.."_inactive"]) and not pool_opts.allow_duplicates and not next(find_joker("Showman"))) and'''
-match_indent = true

@@ -24,8 +24,17 @@ SMODS.Consumable({
 			delay = 0.4,
 			func = function()
 				play_sound("timpani")
-				local card = create_card("Joker", G.jokers, nil, "pridark_prismatic", nil, nil, nil, "fluorite")
-                if G.P_CENTERS[card.label.."_inactive"] then card:set_ability(G.P_CENTERS[card.label.."_inactive"]) end
+                local old_pool = G.P_JOKER_RARITY_POOLS.pridark_prismatic
+                local pool = {}
+                for _, v in ipairs(old_pool) do
+                    if not ((G.GAME.used_jokers[v.key] or G.GAME.used_jokers[v.key.."_inactive"]) and not next(find_joker("Showman"))) then
+                        pool[#pool+1] = v.key
+                        print(v.key)
+                    end
+                end
+                local key = pseudorandom_element(pool, pseudoseed('fluo'))
+                if not key then key = "j_pridark_opticus" end
+				local card = create_card("Joker", G.jokers, nil, "pridark_prismatic", nil, nil, key.."_inactive", "fluorite")
 				card:add_to_deck()
 				G.jokers:emplace(card)
 				card:juice_up(0.3, 0.5)
