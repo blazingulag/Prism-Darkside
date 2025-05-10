@@ -52,7 +52,7 @@ G.PRISMDARKSIDE.equations = {
     {1,-19,90},
 }
 
-SMODS.Joker({
+G.PRISM.Joker({
 	key = "bfm_l",
 	atlas = "pridarkjokers",
 	pos = { x = 0, y = 11 },
@@ -88,7 +88,7 @@ SMODS.Joker({
 	end,
 })
 
-SMODS.Joker({
+G.PRISM.Joker({
 	key = "bfm_r",
 	atlas = "pridarkjokers",
 	pos = { x = 0, y = 12 },
@@ -124,7 +124,7 @@ SMODS.Joker({
 	end,
 })
 
-SMODS.Joker({
+G.PRISM.Joker({
 	key = "surprise_test",
 	atlas = "pridarkjokers",
 	pos = {x=0,y=0},
@@ -230,7 +230,7 @@ function solveFromIndex(index)
     return solveQuadric(c0, c1, c2)
 end
 
-SMODS.Joker({
+G.PRISM.Joker({
 	key = "karl",
 	atlas = "pridarkjokers",
 	pos = {x=0,y=1},
@@ -289,7 +289,7 @@ function G.PRISMDARKSIDE.awaken(card)
     }
 end
 
-SMODS.Joker({
+G.PRISM.Joker({
 	key = "time_loop",
 	atlas = "pridarkjokers",
 	pos = {x=0,y=3},
@@ -318,7 +318,7 @@ SMODS.Joker({
     end
 })
 
-SMODS.Joker({
+G.PRISM.Joker({
 	key = "time_loop_inactive",
 	atlas = "pridarkjokers",
 	pos = {x=0,y=3},
@@ -357,7 +357,7 @@ SMODS.Joker({
     end
 })
 
-SMODS.Joker({
+G.PRISM.Joker({
 	key = "ultipizza",
 	atlas = "pridarkjokers",
 	pos = {x=0,y=8},
@@ -394,7 +394,7 @@ SMODS.Joker({
     end
 })
 
-SMODS.Joker({
+G.PRISM.Joker({
 	key = "ultipizza_inactive",
 	atlas = "pridarkjokers",
 	pos = {x=0,y=8},
@@ -453,7 +453,7 @@ SMODS.Joker({
     end
 })
 
-SMODS.Joker({
+G.PRISM.Joker({
 	key = "opticus",
 	atlas = "pridarkjokers",
 	pos = {x=0,y=5},
@@ -495,7 +495,7 @@ SMODS.Joker({
         end
     end
 })
-SMODS.Joker({
+G.PRISM.Joker({
 	key = "opticus_inactive",
 	atlas = "pridarkjokers",
 	pos = {x=0,y=5},
