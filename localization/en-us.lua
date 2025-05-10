@@ -67,6 +67,11 @@ return {
                     "when {C:attention}Blind{} is selected",
                     "{C:inactive}(Currently {X:dark_edition,C:white}^#2#{C:inactive} Mult)",
                 },
+                unlock={
+                    "Discover the",
+                    "true {C:prismatic}Power{} of",
+                    "the {C:prismatic}Prism",
+                },
             },
             j_pridark_ultipizza_inactive = {
                 name = "The Ultimate Pizza",
