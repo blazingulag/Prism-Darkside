@@ -16,10 +16,6 @@ SMODS.Rarity({
     key = "prismatic",
     badge_colour = G.PRISMDARKSIDE.C.PRISMATIC
 })
-SMODS.Rarity({
-    key = "prismatic_inactive",
-    badge_colour = G.PRISMDARKSIDE.C.PRISMATIC
-})
 
 SMODS.load_file('objects/funcs.lua')()
 SMODS.load_file('objects/jokers.lua')()

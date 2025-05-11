@@ -118,14 +118,12 @@ return {
         dictionary = {
             k_loop = "Loop!",
             k_pridark_prismatic = "Prismatic",
-            k_pridark_prismatic_inactive = "Prismatic",
             k_comrade = "Comrade",
             k_awaken = "Awakened!",
         },
         labels = {
             pridark_trans = "Trans",
             pridark_prismatic = "Prismatic",
-            pridark_prismatic_inactive = "Prismatic"
         }
     }
 }

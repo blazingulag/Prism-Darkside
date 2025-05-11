@@ -19,21 +19,21 @@ SMODS.Consumable({
 		return G.jokers.config.card_limit > #G.jokers.cards
 	end,
     use = function(self, card, area, copier)
+        local old_pool = G.P_JOKER_RARITY_POOLS.pridark_prismatic
+        local pool = {}
+        for _, v in ipairs(old_pool) do
+            if not ((G.GAME.used_jokers[v.key] or G.GAME.used_jokers[v.key.."_inactive"]) and not next(find_joker("Showman"))) 
+            and not v.inactive then
+                pool[#pool+1] = v.key
+            end
+        end
+        local key = pseudorandom_element(pool, pseudoseed('fluo'))
+        if not key then key = "j_pridark_opticus" end
         G.E_MANAGER:add_event(Event({
 			trigger = "after",
 			delay = 0.4,
 			func = function()
 				play_sound("timpani")
-                local old_pool = G.P_JOKER_RARITY_POOLS.pridark_prismatic
-                local pool = {}
-                for _, v in ipairs(old_pool) do
-                    if not ((G.GAME.used_jokers[v.key] or G.GAME.used_jokers[v.key.."_inactive"]) and not next(find_joker("Showman"))) then
-                        pool[#pool+1] = v.key
-                        print(v.key)
-                    end
-                end
-                local key = pseudorandom_element(pool, pseudoseed('fluo'))
-                if not key then key = "j_pridark_opticus" end
 				local card = create_card("Joker", G.jokers, nil, "pridark_prismatic", nil, nil, key.."_inactive", "fluorite")
 				card:add_to_deck()
 				G.jokers:emplace(card)

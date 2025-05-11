@@ -323,7 +323,7 @@ G.PRISM.Joker({
 	atlas = "pridarkjokers",
 	pos = {x=0,y=3},
     --soul_pos = {x=0,y=4},
-	rarity = "pridark_prismatic_inactive",
+	rarity = "pridark_prismatic",
 	cost = 40,
 	unlocked = true,
 	discovered = true,
@@ -333,7 +333,7 @@ G.PRISM.Joker({
        
     no_collection = true,
     immutable = true,
-    in_pool = false,
+    inactive = true,
 
     config = {awakened = "j_pridark_time_loop", extra = {required = 2,current = 0}},
     loc_vars = function(self, info_queue, center)
@@ -399,7 +399,7 @@ G.PRISM.Joker({
 	atlas = "pridarkjokers",
 	pos = {x=0,y=8},
     soul_pos = {x=0,y=10},
-	rarity = "pridark_prismatic_inactive",
+	rarity = "pridark_prismatic",
 	cost = 40,
 	unlocked = true,
 	discovered = true,
@@ -409,7 +409,7 @@ G.PRISM.Joker({
 
     no_collection = true,
     immutable = true,
-    in_pool = false,
+    inactive = true,
 
     config = {awakened = "j_pridark_ultipizza", extra = {required = 2,current = 0,previous_suit = nil}},
     loc_vars = function(self, info_queue, center)
@@ -500,7 +500,7 @@ G.PRISM.Joker({
 	atlas = "pridarkjokers",
 	pos = {x=0,y=5},
     soul_pos = {x=0,y=7},
-	rarity = "pridark_prismatic_inactive",
+	rarity = "pridark_prismatic",
 	cost = 40,
 	unlocked = true,
 	discovered = true,
@@ -510,7 +510,7 @@ G.PRISM.Joker({
 
     no_collection = true,
     immutable = true,
-    in_pool = false,
+    inactive = true,
 
     config = {awakened = "j_pridark_opticus", extra = {required = 2,current = 0}},
     loc_vars = function(self, info_queue, center)
