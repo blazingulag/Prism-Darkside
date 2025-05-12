@@ -389,7 +389,7 @@ G.PRISM.Joker({
             })
             card:add_to_deck()
             G.jokers:emplace(card)
-            return nil,true
+            return {}
         end
     end
 })
