@@ -95,6 +95,12 @@ return {
                     "{C:inactive}(Currently {C:attention}#2#{C:inactive}/#1#)"
                 },
             },
+            j_prism_shork = {
+                name = "Shark Plush",
+                text = {"All future {C:spectral}Editions{}",
+                    "become {C:dark_edition}Trans"
+                },
+            },
         },
         Spectral = {
             c_pridark_spectral_fluorite = {
