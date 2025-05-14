@@ -478,7 +478,7 @@ G.PRISM.Joker({
                 suits[k] = 0
             end
             local card_suit = context.other_card.base.suit
-            for k, v in pairs(G.playing_cards) do
+            for k, v in pairs(G.playing_cards or {}) do
                 for suit, count in pairs(suits) do
                     if suit ~= card_suit and v:is_suit(suit) then
                         v.ability.perma_x_mult = v.ability.perma_x_mult or 0
