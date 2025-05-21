@@ -5,7 +5,7 @@ SMODS.Shader {
 SMODS.Sound {
     key = 'trans',
     path = 'trans.ogg'
-  }
+}
 
 SMODS.Edition {
     key = 'trans',
